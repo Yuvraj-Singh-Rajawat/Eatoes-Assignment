@@ -1,0 +1,25 @@
+{
+  "name": "THE DIGITAL DINNER",
+  "version": "1.0.0",
+  "description": "The Digital Diner - Restaurant Ordering System",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/src/index.js",
+    "server": "nodemon server/src/index.js",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "restaurant",
+    "mern",
+    "postgresql",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.1",
+    "nodemon": "^3.0.1"
+  }
+}
