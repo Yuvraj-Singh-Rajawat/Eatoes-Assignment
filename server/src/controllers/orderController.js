@@ -21,12 +21,12 @@ const createOrder = async (req, res) => {
       return res.status(400).json({ message: "Delivery address is required" });
     }
 
-    // console.log("Creating order with data:", {
-      userId,
-      items,
-      total,
-      deliveryAddress,
-    });
+    // // console.log("Creating order with data:", {
+    //   userId,
+    //   items,
+    //   total,
+    //   deliveryAddress,
+    // });
 
     // Create the order in PostgreSQL
     const order = await prisma.order.create({
@@ -75,8 +75,8 @@ const createOrder = async (req, res) => {
 
         if (pgMenuItem) {
           // console.log(
-            `Creating order item for ${item.name} with ID ${pgMenuItem.id}`
-          );
+          //   `Creating order item for ${item.name} with ID ${pgMenuItem.id}`
+          // );
 
           const orderItem = await prisma.orderItem.create({
             data: {
@@ -106,8 +106,8 @@ const createOrder = async (req, res) => {
             });
 
             // console.log(
-              `Created new menu item in PostgreSQL: ${newMenuItem.name} with ID ${newMenuItem.id}`
-            );
+            //   `Created new menu item in PostgreSQL: ${newMenuItem.name} with ID ${newMenuItem.id}`
+            // );
 
             // Now create the order item with the new menu item
             const orderItem = await prisma.orderItem.create({
