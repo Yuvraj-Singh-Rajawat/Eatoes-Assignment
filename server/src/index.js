@@ -50,7 +50,7 @@ const connectMongoDB = async () => {
     const conn = await mongoose.connect(
       process.env.MONGODB_URI || "mongodb://localhost:27017/THE DIGITAL DINNER"
     );
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    // console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`Error connecting to MongoDB: ${error.message}`);
     process.exit(1);
@@ -64,7 +64,7 @@ const startServer = async () => {
 
     // Start the server
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      // console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
     console.error("Server startup failed:", error);

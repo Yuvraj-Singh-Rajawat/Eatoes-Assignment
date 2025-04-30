@@ -9,7 +9,7 @@ const prisma = new PrismaClient({
 const connectPrisma = async () => {
   try {
     await prisma.$connect();
-    console.log("Prisma client connected successfully");
+    // console.log("Prisma client connected successfully");
   } catch (error) {
     console.error("Failed to connect to Prisma:", error);
     if (error.code === "P1001") {

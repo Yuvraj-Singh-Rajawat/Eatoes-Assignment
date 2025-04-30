@@ -21,7 +21,7 @@ const createOrder = async (req, res) => {
       return res.status(400).json({ message: "Delivery address is required" });
     }
 
-    console.log("Creating order with data:", {
+    // console.log("Creating order with data:", {
       userId,
       items,
       total,
@@ -39,7 +39,7 @@ const createOrder = async (req, res) => {
       },
     });
 
-    console.log("Order created:", order);
+    // console.log("Order created:", order);
 
     // Get existing menu items to store in orderItems
     try {
@@ -47,7 +47,7 @@ const createOrder = async (req, res) => {
       const menuItemIds = items.map((item) => item.id);
       const menuItems = await MenuItem.find({ _id: { $in: menuItemIds } });
 
-      console.log(`Found ${menuItems.length} menu items in MongoDB`);
+      // console.log(`Found ${menuItems.length} menu items in MongoDB`);
 
       // Check if we have PostgreSQL menu items
       const pgMenuItems = await prisma.menuItem.findMany({
@@ -58,7 +58,7 @@ const createOrder = async (req, res) => {
         },
       });
 
-      console.log(`Found ${pgMenuItems.length} menu items in PostgreSQL`);
+      // console.log(`Found ${pgMenuItems.length} menu items in PostgreSQL`);
 
       // Create a map for quick lookups
       const pgMenuItemMap = {};
@@ -74,7 +74,7 @@ const createOrder = async (req, res) => {
         const pgMenuItem = pgMenuItems.find((mi) => mi.name === item.name);
 
         if (pgMenuItem) {
-          console.log(
+          // console.log(
             `Creating order item for ${item.name} with ID ${pgMenuItem.id}`
           );
 
@@ -89,7 +89,7 @@ const createOrder = async (req, res) => {
 
           orderItems.push(orderItem);
         } else {
-          console.log(`Could not find matching menu item for: ${item.name}`);
+          // console.log(`Could not find matching menu item for: ${item.name}`);
           // Create a new menu item in PostgreSQL if needed
           try {
             const newMenuItem = await prisma.menuItem.create({
@@ -105,7 +105,7 @@ const createOrder = async (req, res) => {
               },
             });
 
-            console.log(
+            // console.log(
               `Created new menu item in PostgreSQL: ${newMenuItem.name} with ID ${newMenuItem.id}`
             );
 
