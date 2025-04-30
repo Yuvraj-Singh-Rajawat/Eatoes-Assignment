@@ -56,7 +56,7 @@ export const CartProvider = ({ children }) => {
 
     setLoading(true);
     try {
-      console.log(item)
+      // // console.log(item)
       // const data = {item.id, item.name, item.price, item.quantity: "1"}
       const response = await api.post("/cart/items", {
         id: item._id,
