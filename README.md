@@ -37,10 +37,10 @@ git clone https://github.com/yourusername/eateos.git
 cd eateos
 ```
 
-2. Install server dependencies
+2. Install all dependencies (server and client)
 
 ```bash
-npm install
+npm run install-all
 ```
 
 3. Set up environment variables
@@ -52,7 +52,6 @@ NODE_ENV=development
 JWT_SECRET=your_jwt_secret_key
 MONGODB_URI=mongodb://localhost:27017/eateos
 DATABASE_URL="postgresql://username:password@localhost:5432/eateos?schema=public"
-CLIENT_URL=http://localhost:3000
 ```
 
 4. Set up PostgreSQL with Prisma
@@ -61,45 +60,27 @@ CLIENT_URL=http://localhost:3000
 npx prisma migrate dev --name init
 ```
 
-5. Seed the database (optional)
+5. Running the application
+   You can run both the server and client concurrently using:
 
 ```bash
-node server/src/scripts/seedMenuItems.js
+npm run dev
 ```
 
-6. Start the server
+This will start:
+
+- The backend server at http://localhost:4000
+- The frontend client at http://localhost:3000
+
+Alternatively, you can run them separately:
 
 ```bash
+# Run only the server
 npm run server
+
+# Run only the client
+npm run client
 ```
-
-### Frontend Setup
-
-1. Navigate to the client directory
-
-```bash
-cd client
-```
-
-2. Install client dependencies
-
-```bash
-npm install
-```
-
-3. Create a `.env` file in the client directory
-
-```
-REACT_APP_API_URL=http://localhost:5000/api
-```
-
-4. Start the client
-
-```bash
-npm start
-```
-
-5. The application should now be running at `http://localhost:3000`
 
 ## Database Design Choices
 
