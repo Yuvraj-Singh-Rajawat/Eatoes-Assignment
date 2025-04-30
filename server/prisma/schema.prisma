@@ -34,9 +34,9 @@ model Order {
   deliveryAddress String
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
-  customerId      String?     // Changed to String to match the Customer.id type
+  customerId      String?
+  customer        Customer?   @relation(fields: [customerId], references: [id])
   OrderItem       OrderItem[]
-  // Removed Customer relation to avoid circular reference
 }
 
 model Cart {
@@ -66,11 +66,11 @@ model MenuItem {
 }
 
 model Customer {
-  id        String    @id @default(uuid()) // Changed to String type for consistency
+  id        String    @id @default(uuid())
   name      String
   phone     String    @unique
   createdAt DateTime  @default(now()) @map("created_at")
-  orders    Order[]   // Keep this relation
+  orders    Order[]
 
   @@map("restaurant_customers")
 }
